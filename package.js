@@ -16,4 +16,7 @@ Package.onUse(function (api) {
     api.addFiles([
         'releases/json-path+json-ptr-0.1.3.min.js'
     ], where);
+    api.addFiles([
+        'meteor/helper.js'
+    ], 'client');
 });
