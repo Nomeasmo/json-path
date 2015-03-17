@@ -364,7 +364,7 @@ describe('JSON-path references resolve all valid JSON Pointers', function () {
 
 		describe('the path ../author', function () {
 			it('selects the authors of all books', function () {
-				var p = path.create("..#/author");
+				var p = path.create("../author");
 				var res = p.resolve(data);
 				expect(res).to.contain('Evelyn Waugh');
 				expect(res).to.contain('Nigel Rees');
@@ -620,7 +620,7 @@ describe('JSON-path references resolve all valid JSON Pointers', function () {
 		describe('path with user-supplied selector #/store/book[*][@]', function () {
 			it('selects the books with prices greater than ten', function () {
 				var p = path.create("#/store/book[*][@]"),
-				res = p.resolve(data, function (obj, accum, sel) {
+				res = p.resolve(data, function (obj, accum) {
 					if (obj.price && obj.price < 10)
 						accum.push(obj);
 					return accum;
@@ -634,7 +634,7 @@ describe('JSON-path references resolve all valid JSON Pointers', function () {
 		describe('path with user-supplied selector #/store/book[*][@gt10]', function () {
 			it('selects the books with prices greater than ten', function () {
 				var p = path.create("#/store/book[*][@gt10]"),
-				res = p.resolve(data, { gt10: function (obj, accum, sel) {
+				res = p.resolve(data, { gt10: function (obj, accum) {
 					if (obj.price && obj.price < 10)
 						accum.push(obj);
 					return accum;
@@ -648,8 +648,8 @@ describe('JSON-path references resolve all valid JSON Pointers', function () {
 		describe('path with user-supplied selector and function lookup #/store/book[*][@gt10]', function () {
 			it('selects the books with prices greater than ten', function () {
 				var p = path.create("#/store/book[*][@gt10]"),
-                resolver = function (fName) {
-                            return function (obj, accum, sel) {
+                resolver = function () {
+                            return function (obj, accum) {
                                     if (obj.price && obj.price < 10)
                                         accum.push(obj);
                                     return accum;
@@ -666,7 +666,7 @@ describe('JSON-path references resolve all valid JSON Pointers', function () {
 		describe('path with user-supplied selector followed by further path #/store/book[*][@gt10]/category', function () {
 			it('selects the books with prices greater than ten', function () {
 				var p = path.create("#/store/book[*][@gt10]/category"),
-				res = p.resolve(data, { gt10: function (obj, accum, sel) {
+				res = p.resolve(data, { gt10: function (obj, accum) {
 					if (obj.price && obj.price < 10)
 						accum.push(obj);
 					return accum;
