@@ -1,0 +1,9 @@
+<template name="basicUse">
+    {{jsonPath this "../b"}}
+</template>
+
+<template name="blockUse">
+    {{#if jsonPath this "../aDefined"}}
+        {{jsonPath this "../b"}}
+    {{/if}}
+</template>
