@@ -63,9 +63,18 @@ Javascript:
 ```
 
 Template usage:
+Using json-path to resolve data from deep data structure.
 ```html
-<template name="jsonPath">
-   {{jsonPath store '../author'}}
+<template name="basicUse">
+    {{jsonPath this "../book[0]/author"}}
+</template>
+```
+Or using json-path in block helper like each to iterate over structures that are hidden a bit deeper.
+```html
+<template name="blockUse">
+    {{#each jsonPath this "../book[*]"}}
+        {{author}}
+    {{/each}}
 </template>
 ```
 
