@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function (api) {
     api.versionsFrom(['METEOR@0.9.2.1', 'METEOR@1.0']);
-    api.use('nomeasmo:json-ptr', both);
+    api.use('nomeasmo:json-ptr@0.2.1', both);
     api.use('templating', 'client');
 
     api.addFiles('index.js', both);
