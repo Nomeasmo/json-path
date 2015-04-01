@@ -9,11 +9,11 @@ Please refer to this project for the syntax.
 
 ## Install
 
-`meteor add xx:json-path`
+`meteor add nomeasmo:json-path`
 
 ## Example
 
-This Meteor package also adds the global JsonPath to client and server.
+This Meteor package adds the global JsonPath to client and server.
 
 In addition a template helper `JsonPath` is introduced.
 
